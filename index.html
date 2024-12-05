@@ -12,16 +12,26 @@
             margin: 20px;
         }
         .pi-container {
-            white-space: pre-wrap; /* Ensures whitespace is preserved but wraps text */
-            word-wrap: break-word; /* Allows breaking long strings */
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
     </style>
 </head>
 <body>
     <h1>One Million Digits of Pi</h1>
-	<hr>
-    <div class="pi-container">
-          
-	    </p>
+ <script>
+     var txtFile = new XMLHttpRequest();
+    var allText = "file not found";
+    txtFile.onreadystatechange = function () {
+        if (txtFile.readyState === XMLHttpRequest.DONE && txtFile.status == 200) {
+            allText = txtFile.responseText;
+            allText = allText.split("\n").join("<br>");
+        }
+
+        document.getElementById('txt').innerHTML = allText;
+    }
+    txtFile.open("GET", '/digits.txt', true);
+    txtFile.send(null);
+ </script>
     </body>
 </html>
