@@ -1,37 +1,25 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi Million</title>
-	</head>
-    <style>
-        body {
-            font-family: serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        .pi-container {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-    </style>
+  <meta charset="utf-8">
+  <title>load demo</title>
+  <style>
+  body {
+    font-size: 12px;
+    font-family: Serif;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
-    <h1>One Million Digits of Pi</h1>
- <script>
-     var txtFile = new XMLHttpRequest();
-    var allText = "file not found";
-    txtFile.onreadystatechange = function () {
-        if (txtFile.readyState === XMLHttpRequest.DONE && txtFile.status == 200) {
-            allText = txtFile.responseText;
-            allText = allText.split("\n").join("<br>");
-        }
-
-        document.getElementById('txt').innerHTML = allText;
-    }
-    txtFile.open("GET", '/digits.txt', true);
-    txtFile.send(null);
- </script>
-    </body>
+ 
+<b>Projects:</b>
+<ol id="new-projects"></ol>
+ 
+<script>
+$( "#new-projects" ).load( "/digits.txt );
+</script>
+ 
+</body>
 </html>
