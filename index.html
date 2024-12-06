@@ -7,8 +7,12 @@
   body {
     font-size: 30px;
     font-family: "Trebuchet MS", Veranda, sans-serif;
-    display:inline-block;
+    display: inline-block;
     margin: 10px;
+  }
+    
+  .digits {
+    display: inline-block
   }
   </style>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -16,8 +20,10 @@
 <body>
  
 <h1><b>One Billion Digits of Pi:</b></h1>
-<ol id="pi1"></ol>
-<ol id="pi2"></ol>
+<div class="digits">
+  <ol id="pi1"></ol>
+  <ol id="pi2"></ol>
+</div>
  
 <script>
   $( "#pi1" ).load( "digits.html" );
