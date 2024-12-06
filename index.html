@@ -20,14 +20,17 @@
 <body>
  
 <h1><b>One Billion Digits of Pi:</b></h1>
-<div class="digits">
-  <ol id="pi1"></ol>
-  <ol id="pi2"></ol>
-</div>
+  
+<ol id="digits"></ol>
  
 <script>
   $( "#pi1" ).load( "digits.html" );
   $( "#pi2" ).load( "digits2.html" );
+
+  $(document).ready(function() {
+  const combinedText = $("#pi1").text() + " " + $("#pi2").text();
+  $("digits").text(combinedText);
+});
 </script>
  
 </body>
