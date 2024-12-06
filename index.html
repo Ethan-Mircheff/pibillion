@@ -5,7 +5,7 @@
   <title>One Billion Digits of Pi</title>
   <style>
   body {
-    font-size: 20px;
+    font-size: 30px;
     font-family: "Trebuchet MS", Veranda, sans-serif;
     display: inline-block;
     margin: 10px;
@@ -16,17 +16,19 @@
   }
   </style>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-  
-  <script>
-    $( "#pi1" ).load( "digits.html" );
-    $( "#pi2" ).load( "digits2.html" );
-  </script>
 </head>
 <body>
- 
+
 <h1>One Billion Digits of Pi:</h1>
-  <p id="#pi1"></p>
+<div class="digits">
+  <p id="pi1"></p>
   <p id="pi2"></p>
- 
+</div>
+
+<script>
+  $( "#pi1" ).load( "digits.html" );
+  $( "#pi2" ).load( "digits2.html" );
+</script>
+
 </body>
 </html>
