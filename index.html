@@ -20,7 +20,7 @@
 <body>
  
 <h1><b>One Billion Digits of Pi:</b></h1>
-  <p id="digits"></p>
+  <p id="#digits"></p>
 
 <script>
   $( "#pi1" ).load( "digits.html" );
@@ -28,7 +28,7 @@
 
   $(document).ready(function() {
   const combinedText = $("#pi1").text() + " " + $("#pi2").text();
-  $("#digits").text(combinedText);
+  $("#digits").load(combinedText);
 });
 </script>
  
