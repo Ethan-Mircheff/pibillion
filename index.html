@@ -16,21 +16,17 @@
   }
   </style>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  
+  <script>
+    $( "#pi1" ).load( "digits.html" );
+    $( "#pi2" ).load( "digits2.html" );
+  </script>
 </head>
 <body>
  
-<h1><b>One Billion Digits of Pi:</b></h1>
-  <p id="#digits"></p>
-
-<script>
-  $( "#pi1" ).load( "digits.html" );
-  $( "#pi2" ).load( "digits2.html" );
-
-  $(document).ready(function() {
-  const combinedText = $("#pi1").text() + " " + $("#pi2").text();
-  $("#digits").load(combinedText);
-});
-</script>
+<h1>One Billion Digits of Pi:</h1>
+  <p id="#pi1"></p>
+  <p id="pi2"></p>
  
 </body>
 </html>
