@@ -5,7 +5,7 @@
   <title>One Billion Digits of Pi</title>
   <style>
   body {
-    font-size: 30px;
+    font-size: 20px;
     font-family: "Trebuchet MS", Veranda, sans-serif;
     display: inline-block;
     margin: 10px;
@@ -20,14 +20,14 @@
 <body>
 
 <h1>One Billion Digits of Pi:</h1>
-<div class="digits">
   <p id="pi1"></p>
-  <p id="pi2"></p>
-</div>
 
 <script>
   $( "#pi1" ).load( "digits.html" );
   $( "#pi2" ).load( "digits2.html" );
+  $(document).ready(function(){
+    $("p").append("Appended text.");
+  });
 </script>
 
 </body>
