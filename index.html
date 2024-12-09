@@ -20,13 +20,13 @@
 <body>
 
 <h1>One Billion Digits of Pi:</h1>
-  <p>3.14</p>
+  <p id=pi1></p>
 
 <script>
   $( "#pi1" ).load( "digits.html" );
   $( "#pi2" ).load( "digits2.html" );
   $(document).ready(function(){
-    $("p").append("Appended text.");
+    $("p").append("id=pi2");
   });
 </script>
 
