@@ -20,16 +20,21 @@
 <body>
 
 <h1>One Billion Digits of Pi:</h1>
-  <div class="digits">
-  <p id="pi1"></p>
-  </div>
-
+  <p id="digits"></p>
+    
 <script>
-  $( "#pi1" ).load( "digits.html" );
-  $( "#pi2" ).load( "digits2.html" );
-  $(document).ready(function(){
-    $("p").append("#pi1");
+  $(document).ready(function() {
+  var paragraph = $("#digits");
+
+  // Array of .load file paths
+  var loadFiles = ["digits.load", "digits2.load"];
+
+  $.each(loadFiles, function(index, file) {
+    $.get(file, function(data) {
+      paragraph.append(data);
+    });
   });
+});
 </script>
 
 </body>
