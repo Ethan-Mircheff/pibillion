@@ -24,7 +24,7 @@
     
 <script>
   $(document).ready(function() {
-  var paragraph = $.trim($("#digits"));
+  var paragraph = $("#digits");
   var loadFiles = ["digits.html","digits2.html"];
   $.each(loadFiles, function(index, file) {
     $.get(file, function(data) {
