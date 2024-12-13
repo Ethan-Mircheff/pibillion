@@ -21,7 +21,8 @@
 
 <h1>One Billion Digits of Pi:</h1>
   <p id="digits"></p>
-    
+    <div></div>
+  
 <script>
   $(document).ready(function() {
   var paragraph = $("#digits");
@@ -29,7 +30,7 @@
   $.each(loadFiles, function(index, file) {
     $.get(file, function(data) {
 
-      var tempDiv = $("p").html(data);
+      var tempDiv = $("div").html(data);
       var textContent = tempDiv.text();
       
       paragraph.append(textContent);
