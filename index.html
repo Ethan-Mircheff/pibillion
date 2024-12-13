@@ -29,7 +29,7 @@
   $.each(loadFiles, function(index, file) {
     $.get(file, function(data) {
 
-      var tempDiv = $("<p>").html(data);
+      var tempDiv = $("div").html(data);
       var textContent = tempDiv.text();
       
       paragraph.append(textContent);
