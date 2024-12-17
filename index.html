@@ -32,8 +32,9 @@
 
       var tempDiv = $("<div>").html(data);
       var textContent = tempDiv.text();
+      var textNoSpaces = textContent.replace(/\s+/g, "");
       
-      paragraph.append(loadFiles);
+      paragraph.append(textNoSpaces);
     });
   });
 });
