@@ -25,11 +25,12 @@
   
 <script>
   $(document).ready(function() {
-  var paragraph = $("#digits");
-  var loadFiles = ["digits.html","digits2.html"];
-  $.each(loadFiles, function(index, file) {
+    var paragraph = $("#digits");
+    var loadFiles = ["digits.html","digits2.html"];
+    var sort = $.uniqueSort(loadFiles);
+  $.each(sort, function(index, file) {
     $.get(file, function(data) {
-
+      
       var tempDiv = $("<div>").html(data);
       var textContent = tempDiv.text();
       var textNoSpaces = textContent.replace(/\s+/g, "");
@@ -38,6 +39,7 @@
     });
   });
 });
+  
 </script>
 </body>
 </html>
