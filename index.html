@@ -27,7 +27,7 @@
 <script>
   $(document).ready(function() {
     var paragraph = $("#digits");
-    var loadFiles = ["digits.html", "digits2.html", "digits3.html"];
+    const loadFiles = Array.from({ length: 3 }, (_, i) => `digits${i + 1}.html`);
     
     function loadNextFile(index) {
       if (index < loadFiles.length) {
