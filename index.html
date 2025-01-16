@@ -10,7 +10,6 @@
       display: inline-block;
       margin: 10px;
     }
-    
     .digits {
       display: inline-block;
       font-family: serif;
@@ -26,13 +25,11 @@
   async function loadDigits() {
     const paragraph = document.getElementById("digits");
     const loadFiles = Array.from({ length: 4 }, (_, i) => `digits${i + 1}.html`);
-
     // Load files sequentially
     for (let file of loadFiles) {
       try {
         const response = await fetch(file);
         const data = await response.text();
-
         // Remove spaces and append to the paragraph
         const textNoSpaces = data.replace(/\s+/g, "");
         paragraph.innerHTML += textNoSpaces;
@@ -41,10 +38,9 @@
       }
     }
   }
-
   // Start loading digits once the document is ready
   document.addEventListener("DOMContentLoaded", loadDigits);
 </script>
-
+  
 </body>
 </html>
