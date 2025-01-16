@@ -5,43 +5,43 @@
   <meta charset="utf-8">
   <title>One Billion Digits of Pi</title>
   <style>
-  body {
-    font-size: 20px;
-    font-family: "Trebuchet MS", Veranda, sans-serif;
-    display: inline-block;
-    margin: 10px;
-  }
-    
-  .digits {
-    display: inline-block;
-    font-family: serif;
-  }
+    body {
+      font-size: 20px;
+      font-family: "Trebuchet MS", Veranda, sans-serif;
+      display: inline-block;
+      margin: 10px;
+    }
+    .digits {
+      display: inline-block;
+      font-family: serif;
+    }
   </style>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
 
 <h1>One Billion Digits of Pi:</h1>
-  <p id="digits"></p>
-  
+<p id="digits"></p>
+
 <script>
   $(document).ready(function() {
-    var paragraph = $("#digits");
+    const paragraph = $("#digits");
     const loadFiles = Array.from({ length: 3 }, (_, i) => `digits${i + 1}.html`);
-    
+
     function loadNextFile(index) {
       if (index < loadFiles.length) {
         $.get(loadFiles[index], function(data) {
-          var tempDiv = $("<div>").html(data);
-          var textContent = tempDiv.text();
-          var textNoSpaces = textContent.replace(/\s+/g, "");
-          paragraph.append(textNoSpaces);
+          const bodyContent = $(data).filter("body").text();
+          const cleanedText = bodyContent.replace(/\s+/g, "");
+          paragraph.append(cleanedText);
           loadNextFile(index + 1);
         });
       }
     }
+
     loadNextFile(0);
   });
 </script>
+
 </body>
 </html>
