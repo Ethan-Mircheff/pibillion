@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <meta charset="utf-8">
   <title>One Billion Digits of Pi</title>
   <style>
@@ -11,36 +10,40 @@
       display: inline-block;
       margin: 10px;
     }
+    
     .digits {
       display: inline-block;
       font-family: serif;
     }
   </style>
-  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
 
 <h1>One Billion Digits of Pi:</h1>
-<p id="digits"></p>
-
+  <p id="digits"></p>
+  
 <script>
-  $(document).ready(function() {
-    const paragraph = $("#digits");
+  async function loadDigits() {
+    const paragraph = document.getElementById("digits");
     const loadFiles = Array.from({ length: 4 }, (_, i) => `digits${i + 1}.html`);
 
-    function loadNextFile(index) {
-      if (index < loadFiles.length) {
-        $.get(loadFiles[index], function(data) {
-          const bodyContent = $(data).filter("body").text();
-          const cleanedText = bodyContent.replace(/\s+/g, "");
-          paragraph.append(cleanedText);
-          loadNextFile(index + 1);
-        });
+    // Load files sequentially
+    for (let file of loadFiles) {
+      try {
+        const response = await fetch(file);
+        const data = await response.text();
+
+        // Remove spaces and append to the paragraph
+        const textNoSpaces = data.replace(/\s+/g, "");
+        paragraph.innerHTML += textNoSpaces;
+      } catch (error) {
+        console.error(`Error loading file ${file}:`, error);
       }
     }
+  }
 
-    loadNextFile(0);
-  });
+  // Start loading digits once the document is ready
+  document.addEventListener("DOMContentLoaded", loadDigits);
 </script>
 
 </body>
