@@ -9,13 +9,8 @@
       font-size: 20px;
       font-family: "Trebuchet MS", Veranda, sans-serif;
       display: inline-block;
-      margin: 10px;
+      margin: 15px;
       overflow-wrap: anywhere;
-    }
-    
-    .digits {
-      display: inline-block;
-      font-family: serif;
     }
   </style>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -29,7 +24,6 @@
   $(document).ready(function() {
     var paragraph = $("#digits");
     const loadFiles = Array.from({ length: 4 }, (_, i) => `digits${i + 1}.txt`);
-    
     function loadNextFile(index) {
       if (index < loadFiles.length) {
         $.get(loadFiles[index], function(data) {
