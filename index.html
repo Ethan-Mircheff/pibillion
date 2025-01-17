@@ -32,7 +32,7 @@
     function loadNextFile(index) {
       if (index < loadFiles.length) {
         $.get(loadFiles[index], function(data) {
-          var textNoSpaces = textContent.replace(/\s+/g, "");
+          var textNoSpaces = data.replace(/\s+/g, "");
           paragraph.append(textNoSpaces);
           
           loadNextFile(index + 1);
