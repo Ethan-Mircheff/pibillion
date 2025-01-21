@@ -8,12 +8,9 @@
     body {
       font-size: 20px;
       font-family: "Trebuchet MS", Veranda, sans-serif;
+      display: inline-block;
       margin: 15px;
       overflow-wrap: anywhere;
-    }
-    #digits {
-      max-height: 90vh;
-      overflow-y: auto;
     }
   </style>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -26,33 +23,19 @@
 <script>
   $(document).ready(function() {
     var paragraph = $("#digits");
-    const loadFiles = Array.from({ length: 11 }, (_, i) => `digits${i + 1}.txt`);
-    let fileIndex = 0; // Track which file to load next
-
-    function loadNextFile() {
-      if (fileIndex < loadFiles.length) {
-        const fileToLoad = loadFiles[fileIndex];
-        $.get(fileToLoad, function(data) {
+    const loadFiles = Array.from({ length: 5 }, (_, i) => `digits${i + 1}.txt`);
+    function loadNextFile(index) {
+      if (index < loadFiles.length) {
+        $.get(loadFiles[index], function(data) {
           var textNoSpaces = data.replace(/\s+/g, "");
           paragraph.append(textNoSpaces);
-          fileIndex++; // Increment to load the next file on demand
+          
+          loadNextFile(index + 1);
         });
       }
     }
 
-    // Initially load the first file
-    loadNextFile();
-
-    // Lazy load additional files as the user scrolls
-    paragraph.on("scroll", function() {
-      const scrollPosition = paragraph.scrollTop() + paragraph.innerHeight();
-      const scrollHeight = paragraph[0].scrollHeight;
-
-      // If the user is near the bottom of the scroll area, load the next file
-      if (scrollPosition >= scrollHeight - 50) {
-        loadNextFile();
-      }
-    }
+    loadNextFile(0);
   });
 </script>
 </body>
