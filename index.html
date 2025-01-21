@@ -23,7 +23,7 @@
 <script>
   $(document).ready(function() {
     var paragraph = $("#digits");
-    const loadFiles = Array.from({ length: 5 }, (_, i) => `digits${i + 1}.txt`);
+    const loadFiles = Array.from({ length: 11 }, (_, i) => `digits${i + 1}.txt`);
     function loadNextFile(index) {
       if (index < loadFiles.length) {
         $.get(loadFiles[index], function(data) {
