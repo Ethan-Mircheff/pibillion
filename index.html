@@ -18,25 +18,35 @@
 <body>
 
 <h1>One Billion Digits of Pi:</h1>
-  <p id="digits"></p>
-  
+<p id="digits"></p>
+
 <script>
   $(document).ready(function() {
     var paragraph = $("#digits");
     const loadFiles = Array.from({ length: 11 }, (_, i) => `digits${i + 1}.txt`);
-    function loadNextFile(index) {
-      if (index < loadFiles.length) {
-        $.get(loadFiles[index], function(data) {
+    let currentFileIndex = 0;
+    let isLoading = false;
+
+    function loadNextFile() {
+      if (currentFileIndex < loadFiles.length && !isLoading) {
+        isLoading = true;
+        $.get(loadFiles[currentFileIndex], function(data) {
           var textNoSpaces = data.replace(/\s+/g, "");
           paragraph.append(textNoSpaces);
-          
-          loadNextFile(index + 1);
+          currentFileIndex++;
+          isLoading = false;
         });
       }
     }
+    loadNextFile();
 
-    loadNextFile(0);
+    $(window).on('scroll', function() {
+      if ($(window).scrollTop() + $(window).height() >= $(document).height() - 50) {
+        loadNextFile();
+      }
+    });
   });
 </script>
+
 </body>
 </html>
